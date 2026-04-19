@@ -1,0 +1,109 @@
+.zoom-parallax-container {
+  position: relative;
+  height: 250vh; /* Reduced to avoid the 'useless white space' tail */
+  margin-bottom: -150vh; /* Pulled up so footer starts exactly as the pause begins */
+}
+
+.zoom-sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.zoom-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-image-wrapper {
+  position: relative;
+  width: 25vw;
+  height: 25vh;
+}
+
+.zoom-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.zoom-layer-1 .zoom-image-wrapper {
+  width: 25vw;
+  height: 25vh;
+}
+
+.zoom-layer-1 .zoom-image-wrapper img {
+  object-fit: contain;
+}
+
+/* Dynamically mapped spatial transforms from the original working reference */
+.zoom-layer-2 .zoom-image-wrapper {
+  top: -32vh;
+  left: 0vw;
+  height: 25vh;
+  width: 45vw;
+}
+
+.zoom-layer-3 .zoom-image-wrapper {
+  top: -5vh;
+  left: -28vw;
+  height: 35vh;
+  width: 30vw;
+}
+
+.zoom-layer-4 .zoom-image-wrapper {
+  top: -2vh;
+  left: 28vw;
+  height: 28vh;
+  width: 38vw;
+}
+
+.zoom-layer-5 .zoom-image-wrapper {
+  top: 30vh;
+  left: 5vw;
+  height: 30vh;
+  width: 25vw;
+}
+
+.zoom-layer-6 .zoom-image-wrapper {
+  top: 32vh;
+  left: -26vw;
+  height: 25vh;
+  width: 38vw;
+}
+
+.zoom-layer-7 .zoom-image-wrapper {
+  top: 30vh;
+  left: 34vw;
+  height: 30vh;
+  width: 22vw;
+}
+
+/* Mobile Overrides (Optimized) */
+@media (max-width: 1024px) {
+  .zoom-parallax-container {
+    height: 250vh;
+    margin-bottom: -150vh !important;
+  }
+
+  .zoom-image-wrapper {
+    width: 60vw;
+    height: 40vh;
+  }
+
+  .zoom-layer-1 .zoom-image-wrapper { width: 60vw; height: 40vh; }
+  .zoom-layer-2 .zoom-image-wrapper { top: -25vh; left: 0; width: 60vw; }
+  .zoom-layer-3 .zoom-image-wrapper { top: -5vh; left: -20vw; width: 50vw; }
+  .zoom-layer-4 .zoom-image-wrapper { top: -2vh; left: 20vw; width: 50vw; }
+  .zoom-layer-5 .zoom-image-wrapper { top: 25vh; left: 0; width: 60vw; }
+  .zoom-layer-6 .zoom-image-wrapper { top: 20vh; left: -15vw; width: 45vw; }
+  .zoom-layer-7 .zoom-image-wrapper { top: 20vh; left: 15vw; width: 45vw; }
+}

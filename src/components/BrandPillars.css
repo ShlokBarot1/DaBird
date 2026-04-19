@@ -1,0 +1,79 @@
+.brand-pillars {
+  background-color: hsla(204.39,79.49%,38.24%,1); /* Vibrant cobalt blue from video */
+  color: #ffffff;
+  padding: 8rem 2rem;
+  font-family: var(--font-primary);
+  text-transform: lowercase; /* Follows Da Bird lowercase rule */
+}
+
+.pillars-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.side-tag {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.main-title {
+  font-size: 8vw;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin: 0;
+  line-height: 1;
+}
+
+.pillars-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem; /* Large breathable vertical gap */
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.pillar-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.pillar-label {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.pillar-text {
+  font-size: 2.5rem; /* Massive paragraph text */
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  transition: color 0.15s ease;
+  cursor: default;
+  margin: 0;
+}
+
+/* Iconic Neon Highlight Hover Step */
+.hover-neon:hover {
+  color: #ccff00; /* Neon Lime Green from video */
+}
+
+@media (max-width: 768px) {
+  .pillar-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .pillar-text {
+    font-size: 1.5rem;
+  }
+  
+  .main-title {
+    font-size: 12vw;
+  }
+}

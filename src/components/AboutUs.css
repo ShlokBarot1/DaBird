@@ -1,0 +1,84 @@
+.about-page {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 100px;
+}
+
+.about-intro {
+  padding: 15vh 5vw 10vh 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #fff;
+  color: #000;
+}
+
+.about-intro-story-label {
+  flex: 0 0 25%;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-align: left;
+}
+
+.about-intro-main {
+  flex: 0 0 70%;
+  max-width: 1100px;
+  text-align: left;
+}
+
+.about-intro-title {
+  font-size: 3.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 0 0 4rem 0;
+}
+
+.about-intro-body {
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.about-intro-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-intro-col p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #888; /* Faded slightly replicating the aesthetic from the Odd Ritual image */
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .about-intro {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .about-intro-story-label {
+    flex: none;
+    width: 100%;
+  }
+  
+  .about-intro-main {
+    flex: none;
+    width: 100%;
+  }
+  
+  .about-intro-title {
+    font-size: 2.8rem;
+    margin-bottom: 3rem;
+  }
+  
+  .about-intro-body {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}

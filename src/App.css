@@ -1,0 +1,22 @@
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  min-height: 80vh;
+}
+
+.footer {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  padding: 4rem 5%;
+  text-align: center;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

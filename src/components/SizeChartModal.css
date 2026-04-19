@@ -1,0 +1,70 @@
+.size-chart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.size-chart-modal {
+  background-color: #fff;
+  width: 100%;
+  max-width: 600px;
+  padding: 3rem;
+  position: relative;
+  color: #000;
+  text-align: center;
+}
+
+.size-chart-modal h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  color: hsla(204.39,79.49%,38.24%,1);
+}
+
+.sc-subtitle {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.sc-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
+  font-weight: 300;
+}
+
+.sc-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.sc-table th, .sc-table td {
+  border: 1px solid #ddd;
+  padding: 1rem 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.sc-table td:first-child {
+  text-align: left;
+}
+
+.sc-table th {
+  font-weight: 800;
+}

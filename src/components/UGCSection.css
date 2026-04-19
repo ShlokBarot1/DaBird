@@ -1,0 +1,116 @@
+.ugc-section {
+  width: 96vw;
+  max-width: 2000px;
+  margin: 0 auto 6rem;
+  padding: 0 0 2rem;
+}
+
+.ugc-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+}
+
+.ugc-title {
+  font-family: 'Satoshi', sans-serif;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #0a2540;
+  margin: 0;
+}
+
+.ugc-subtitle {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.ugc-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .ugc-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.ugc-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+
+/* The placeholder fills the same portrait aspect as the highlight cards */
+.ugc-video-placeholder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #1a1a1a;
+  overflow: hidden;
+}
+
+.ugc-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ugc-play-icon {
+  position: relative;
+  z-index: 1;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.ugc-video-placeholder:hover .ugc-play-icon {
+  opacity: 1;
+}
+
+.ugc-drop-hint {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.35;
+}
+
+.ugc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.ugc-label {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0a2540;
+}
+
+.ugc-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: hsla(204.39, 79.49%, 38.24%, 1);
+  letter-spacing: 0.04em;
+}

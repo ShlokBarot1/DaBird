@@ -1,0 +1,57 @@
+.about-collage-container {
+  position: relative;
+  width: 100%;
+  height: 250vh; /* Canvas depth dictating how long the scroll event lasts */
+  background-color: #fff; /* Purified background allowing floating images to cleanly intersect */
+  overflow: hidden;
+  margin-top: 5vh;
+}
+
+.collage-img {
+  position: absolute;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Scattered / Offset sizing identically mapping the Odd Ritual layered references */
+.collage-img-1 {
+  top: 0%;
+  left: 5%;
+  width: 25%;
+  aspect-ratio: 3 / 6; /* Extremely tall thin portrait matching the wall / pillar layout */
+  z-index: 1;
+}
+
+.collage-img-2 {
+  top: 25%; /* Pushed down dynamically so it begins entering right after img-1 */
+  right: 5%;
+  width: 60%;
+  aspect-ratio: 16 / 9; /* Wide aesthetic shot on the right side */
+  z-index: 2;
+}
+
+.collage-img-3 {
+  top: 50%; /* Reaches the viewport firmly mid-scroll to crush over the 2nd photo */
+  left: 10%;
+  width: 75%;  /* Colossal focal shot overlapping the previous dual layouts */
+  aspect-ratio: 21 / 9; /* Ultra wide cutting across the center */
+  z-index: 3;
+}
+
+.collage-img-4 {
+  top: 75%; /* Lower anchor arriving dead last */
+  left: 45%; /* Offset heavy towards the right bottom */
+  width: 40%;
+  aspect-ratio: 4 / 3;
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .about-collage-container {
+    height: 180vh;
+  }
+  .collage-img-1 { width: 40%; top: 0%; }
+  .collage-img-2 { width: 70%; top: 30%; right: -5%; }
+  .collage-img-3 { width: 90%; left: 5%; top: 60%; aspect-ratio: 16/9; z-index: 4; }
+  .collage-img-4 { width: 50%; left: 30%; top: 85%; }
+}

@@ -1,0 +1,163 @@
+.contact-page {
+  padding-top: 150px;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 6rem;
+  text-transform: lowercase;
+  font-family: Arial, sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.contact-header {
+  margin-bottom: 5rem;
+}
+
+.contact-title {
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.05em;
+  color: hsla(204.39,79.49%,38.24%,1); /* High-impact Da Bird Blue branding */
+}
+
+.contact-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 6rem;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.input-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.input-group label {
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: #000;
+}
+
+/* Base Input Styles */
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  background-color: #f6f6f6;
+  border: 1px solid #e0e0e0;
+  padding: 1.25rem 1.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  color: #000;
+}
+
+/* Modern Apple/Stripe-like Interactive Focus Rings in Dabird Blue */
+.input-group input:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: hsla(204.39,79.49%,38.24%,1);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 0, 255, 0.1); 
+}
+
+.submit-btn {
+  grid-column: 1 / -1;
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: hsla(204.39,79.49%,38.24%,1);
+}
+
+.submit-btn.active {
+  background-color: hsla(204.39,79.49%,38.24%,1);
+  cursor: default;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-left: 3rem;
+  border-left: 1px solid #eee;
+}
+
+.info-block h3 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: hsla(204.39,79.49%,38.24%,1);
+}
+
+.info-block p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1.5;
+}
+
+.info-block p.subtext {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .contact-info {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid #eee;
+    padding-top: 3rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-title {
+    font-size: 3rem;
+  }
+}

@@ -1,0 +1,130 @@
+.join-fam-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.join-fam-modal {
+  background-color: #fff;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  display: flex;
+  position: relative;
+}
+
+.jf-left {
+  width: 50%;
+  height: 100%;
+}
+
+.jf-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jf-right {
+  width: 50%;
+  height: 100%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #fff;
+}
+
+.jf-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
+  font-weight: 300;
+  z-index: 10;
+}
+
+.jf-form-container {
+  margin-top: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.jf-form-container h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.jf-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto; /* Push to bottom naturally */
+}
+
+.jf-form input {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  outline: none;
+  margin-bottom: 0;
+  font-family: inherit;
+  color: #000;
+  background: transparent;
+}
+
+.jf-form input:focus {
+  border-bottom-color: hsla(204.39,79.49%,38.24%,1);
+}
+
+.jf-submit-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: left;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.jf-submit-btn:hover {
+  color: hsla(204.39,79.49%,38.24%,1);
+  border-bottom-color: hsla(204.39,79.49%,38.24%,1);
+}
+
+@media (max-width: 768px) {
+  .join-fam-modal {
+    flex-direction: column;
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .jf-left {
+    width: 100%;
+    height: 300px;
+  }
+  .jf-right {
+    width: 100%;
+    height: auto;
+  }
+}

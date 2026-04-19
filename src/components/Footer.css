@@ -1,0 +1,112 @@
+.footer-container {
+  background-color: #ffffff;
+  color: hsla(204.39,79.49%,38.24%,1); /* High-impact Da Bird blue accents globally */
+  padding: 3rem 5% 4rem 5%;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase; /* Mimics layout strictly */
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12rem;
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.massive-logo {
+  font-size: 10vw; /* Massive responsive scaling */
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-left: -0.02em; 
+  text-transform: none; /* Removed lowercase lock */
+}
+
+.logo-symbol {
+  font-size: 4rem;
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: right;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+}
+
+.footer-tagline p {
+  margin: 0;
+}
+
+.footer-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: hsla(204.39,79.49%,38.24%,1);
+}
+
+.footer-links {
+  border-top: 1px solid hsla(204.39,79.49%,38.24%,1); /* Core requested accent line */
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a,
+.footer-links p {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: hsla(204.39,79.49%,38.24%,1); 
+  text-decoration: none;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.4;
+}
+
+@media (max-width: 1024px) {
+  .massive-logo {
+    font-size: 5rem;
+  }
+  .footer-bottom {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .massive-logo {
+    font-size: 4rem;
+  }
+  .footer-tagline {
+    text-align: left;
+  }
+  .footer-bottom {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

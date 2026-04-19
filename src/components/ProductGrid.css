@@ -1,0 +1,198 @@
+.product-section {
+  padding: 4rem 0 6rem 0;
+  background-color: #ffffff; /* clean white canvas */
+}
+
+.section-header {
+  text-align: left;
+  margin-bottom: 3rem;
+  padding: 0 1.5rem; /* Aligns with the edge of the carousel */
+}
+
+.featured-title {
+  font-family: var(--font-primary);
+  font-size: 2.25rem; /* Increased size significantly */
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  color: #000;
+  text-transform: lowercase; /* match da bird. */
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden; 
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollMarquee 30s linear infinite;
+  gap: 1rem; /* Gap between cards */
+  padding: 0 1.5rem;
+}
+
+.carousel-track.paused {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.5rem)); }
+}
+
+.carousel-card {
+  width: 85vw; /* Mobile sizing */
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .carousel-card {
+    width: 25vw; /* Scaled back card size to naturally fit 4 wide */
+  }
+}
+
+.card-image-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background-color: #f7f9fa; /* Slight off-white to contrast the main white bg */
+  overflow: hidden;
+}
+
+.card-badge-urgency {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #000;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.product-base-img, .product-hover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-hover-img {
+  opacity: 0;
+}
+
+/* On hover, fade in model image */
+.carousel-card:hover .product-hover-img {
+  opacity: 1;
+}
+
+.card-info-overlay {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+  width: calc(100% - 1rem);
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0; 
+  transform: translateY(10px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+}
+
+/* On hover, slide up info overlay */
+.carousel-card:hover .card-info-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-info-title {
+  font-size: 0.8rem;
+  font-weight: 800; /* Extra bold */
+  letter-spacing: 0.05em;
+  color: #000;
+  text-transform: uppercase;
+  font-family: Arial, sans-serif; /* rigid bold look */
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.card-info-price {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #000;
+  font-family: Arial, sans-serif;
+  white-space: nowrap;
+}
+
+.static-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 0 1.5rem;
+}
+
+.static-card {
+  width: 100%; /* Override carousel mobile width limits */
+}
+
+@media (max-width: 1024px) {
+  .static-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .static-grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- MOBILE CAROUSEL TOUCH OVERRIDES --- */
+@media (max-width: 1024px) {
+  .carousel-container {
+    overflow: hidden; 
+  }
+
+  .carousel-track {
+    width: 100%; /* Provide explicit bound to trigger overflow-x on itself */
+    animation: none !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 2rem; /* Buffer for aesthetics */
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    padding-right: 1.5rem;
+  }
+  
+  .carousel-track::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+  }
+
+  .carousel-card {
+    /* 1.5rem padding + 20px peek = 44px approx, so next card shows ~20px */
+    width: calc(100vw - 3rem - 20px); 
+    scroll-snap-align: start;
+  }
+
+  .card-info-overlay {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .product-hover-img {
+    display: none !important; /* Disable hover model image on pure touch to prevent confusing jumps */
+  }
+}

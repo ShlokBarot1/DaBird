@@ -1,4 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
+import ReactPixelModule from 'react-facebook-pixel';
+const ReactPixel = ReactPixelModule.default || ReactPixelModule;
 import ProductGrid from './ProductGrid';
 import { AnimatePresence, motion } from 'framer-motion';
 import SizeChartModal from './SizeChartModal';
@@ -140,6 +142,18 @@ const ProductDetail = () => {
     );
     if (match) setSelectedVariant(match);
   }, [selectedOptions, product]);
+
+  // ✅ Fire Meta Pixel ViewContent when product loads
+  useEffect(() => {
+    if (!product) return;
+    ReactPixel.track('ViewContent', {
+      content_name: product.title,
+      content_ids: [product.id],
+      content_type: 'product',
+      value: parseFloat(product.price),
+      currency: 'GBP',
+    });
+  }, [product]);
 
   // Scroll to variant image when variant changes
   useEffect(() => {

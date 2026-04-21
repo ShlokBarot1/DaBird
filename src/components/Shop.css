@@ -19,6 +19,8 @@
   padding-top: 1.5rem;
   flex-wrap: wrap;
   gap: 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .shop-header-left {
@@ -39,8 +41,13 @@
   color: #a0a0a0;
   cursor: pointer;
   transition: color 0.3s ease;
-  padding: 0;
+  padding: 0.5rem 0.25rem;
+  min-height: 44px;
   white-space: nowrap;
+  position: relative;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .shop-header-left button.active,
@@ -98,12 +105,14 @@
     flex: 0 0 100%;
     flex-wrap: nowrap;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; 
-    gap: 1.5rem;
+    gap: 1rem;
+    position: relative;
+    z-index: 5;
   }
 
   .shop-header-left::-webkit-scrollbar {

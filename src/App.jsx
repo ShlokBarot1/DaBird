@@ -1,6 +1,4 @@
 import { useState, useEffect, lazy, Suspense } from 'react';
-import ReactPixelModule from 'react-facebook-pixel';
-const ReactPixel = ReactPixelModule.default || ReactPixelModule;
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
@@ -36,14 +34,21 @@ function App() {
   const [loadHomeGrid, setLoadHomeGrid] = useState(false);
   const { cartOpen } = useCart();
 
-  // ✅ Initialize Meta Pixel ONCE on app load
+  // ✅ Initialize Meta Pixel ONCE on app load (dynamic import to avoid hydration issues)
   useEffect(() => {
-    ReactPixel.init('905842039006113');
+    import('react-facebook-pixel').then((module) => {
+      const ReactPixel = module.default?.default || module.default || module;
+      ReactPixel.init('905842039006113');
+      ReactPixel.pageView();
+    });
   }, []);
 
   // ✅ Fire PageView on every page/route change
   useEffect(() => {
-    ReactPixel.pageView();
+    import('react-facebook-pixel').then((module) => {
+      const ReactPixel = module.default?.default || module.default || module;
+      ReactPixel.pageView();
+    });
   }, [page]);
 
   useEffect(() => {

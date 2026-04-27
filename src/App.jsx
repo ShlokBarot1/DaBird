@@ -38,7 +38,8 @@ function App() {
   useEffect(() => {
     import('react-facebook-pixel').then((module) => {
       const ReactPixel = module.default?.default || module.default || module;
-      ReactPixel.init('905842039006113');
+      // Disable autoConfig to prevent "SubscribedButtonClick" and other automatic events
+      ReactPixel.init('905842039006113', {}, { autoConfig: false });
       ReactPixel.pageView();
     });
   }, []);

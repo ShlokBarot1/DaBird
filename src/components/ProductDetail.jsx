@@ -200,6 +200,19 @@ const ProductDetail = () => {
   const handleAddToCart = async () => {
     if (!selectedVariant) return;
     setCartText('ADDING...');
+
+    // ✅ Fire Meta Pixel AddToCart event
+    import('react-facebook-pixel').then((module) => {
+      const ReactPixel = module.default?.default || module.default || module;
+      ReactPixel.track('AddToCart', {
+        content_name: product.title,
+        content_ids: [product.id],
+        content_type: 'product',
+        value: parseFloat(selectedVariant.price),
+        currency: 'GBP',
+      });
+    });
+
     await addToCart(selectedVariant.id, 1);
     setCartText('ADDED TO CART!');
     setTimeout(() => setCartText('ADD TO CART'), 2000);
@@ -210,7 +223,21 @@ const ProductDetail = () => {
     setCartText('REDIRECTING...');
     const next = await addToCart(selectedVariant.id, 1, { openDrawer: false });
     if (next?.checkoutUrl) {
-      window.location.href = next.checkoutUrl;
+      // ✅ Fire Meta Pixel InitiateCheckout event
+      import('react-facebook-pixel').then((module) => {
+        const ReactPixel = module.default?.default || module.default || module;
+        ReactPixel.track('InitiateCheckout', {
+          content_ids: [selectedVariant.id],
+          content_type: 'product',
+          value: parseFloat(selectedVariant.price),
+          currency: 'GBP',
+          num_items: 1,
+        });
+
+        setTimeout(() => {
+          window.location.href = next.checkoutUrl;
+        }, 100);
+      });
       return;
     }
     setCartText('ADD TO CART');

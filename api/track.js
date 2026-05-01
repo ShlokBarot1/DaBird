@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).end();
 
-  const { eventName, email, phone, value, currency, contentIds, url } = req.body;
+  const { eventName, email, phone, value, currency, contentIds, url, fbc, fbp } = req.body;
 
   const [hashedEmail, hashedPhone] = await Promise.all([
     email ? sha256(email) : Promise.resolve(null),
@@ -24,6 +24,8 @@ export default async function handler(req, res) {
         ph: hashedPhone ? [hashedPhone] : [],
         client_ip_address: req.headers['x-forwarded-for']?.split(',')[0]?.trim() || '',
         client_user_agent: req.headers['user-agent'] || '',
+        ...(fbc && { fbc }),
+        ...(fbp && { fbp }),
       },
       custom_data: {
         value,

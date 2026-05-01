@@ -51,10 +51,10 @@ function App() {
       ReactPixel.pageView();
     });
 
-    if (window.ShopifyAnalytics?.lib) {
-      window.ShopifyAnalytics.lib.track('Viewed Page', {
-        pageType: page,
-        url: window.location.href,
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: page,
+        page_location: window.location.href,
       });
     }
   }, [page]);

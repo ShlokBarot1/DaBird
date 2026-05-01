@@ -5,6 +5,7 @@ import SizeChartModal from './SizeChartModal';
 import { shopifyClient } from '../lib/shopify';
 import { GET_PRODUCT_BY_HANDLE_QUERY } from '../lib/queries';
 import { useCart } from '../lib/cart';
+import { track } from '../utils/track';
 import './ProductDetail.css';
 
 const ProductDetail = () => {
@@ -141,19 +142,25 @@ const ProductDetail = () => {
     if (match) setSelectedVariant(match);
   }, [selectedOptions, product]);
 
-  // ✅ Fire Meta Pixel ViewContent when product loads
+  // ✅ Fire Meta Pixel ViewContent + Shopify Viewed Product when product loads
   useEffect(() => {
     if (!product) return;
-    import('react-facebook-pixel').then((module) => {
-      const ReactPixel = module.default?.default || module.default || module;
-      ReactPixel.track('ViewContent', {
-        content_name: product.title,
-        content_ids: [product.id],
-        content_type: 'product',
-        value: parseFloat(product.price),
-        currency: 'GBP',
-      });
+    track('ViewContent', {
+      content_name: product.title,
+      content_ids: [product.id],
+      content_type: 'product',
+      value: parseFloat(product.price),
+      currency: 'GBP',
     });
+    if (window.ShopifyAnalytics?.lib) {
+      window.ShopifyAnalytics.lib.track('Viewed Product', {
+        currency: 'GBP',
+        variantId: selectedVariant?.id,
+        productId: product.id,
+        productTitle: product.title,
+        price: parseFloat(product.price),
+      });
+    }
   }, [product]);
 
   // Scroll to variant image when variant changes
@@ -202,15 +209,12 @@ const ProductDetail = () => {
     setCartText('ADDING...');
 
     // ✅ Fire Meta Pixel AddToCart event
-    import('react-facebook-pixel').then((module) => {
-      const ReactPixel = module.default?.default || module.default || module;
-      ReactPixel.track('AddToCart', {
-        content_name: product.title,
-        content_ids: [product.id],
-        content_type: 'product',
-        value: parseFloat(selectedVariant.price),
-        currency: 'GBP',
-      });
+    track('AddToCart', {
+      content_name: product.title,
+      content_ids: [product.id],
+      content_type: 'product',
+      value: parseFloat(selectedVariant.price),
+      currency: 'GBP',
     });
 
     await addToCart(selectedVariant.id, 1);
@@ -224,20 +228,16 @@ const ProductDetail = () => {
     const next = await addToCart(selectedVariant.id, 1, { openDrawer: false });
     if (next?.checkoutUrl) {
       // ✅ Fire Meta Pixel InitiateCheckout event
-      import('react-facebook-pixel').then((module) => {
-        const ReactPixel = module.default?.default || module.default || module;
-        ReactPixel.track('InitiateCheckout', {
-          content_ids: [selectedVariant.id],
-          content_type: 'product',
-          value: parseFloat(selectedVariant.price),
-          currency: 'GBP',
-          num_items: 1,
-        });
-
-        setTimeout(() => {
-          window.location.href = next.checkoutUrl;
-        }, 100);
+      track('InitiateCheckout', {
+        content_ids: [selectedVariant.id],
+        content_type: 'product',
+        value: parseFloat(selectedVariant.price),
+        currency: 'GBP',
+        num_items: 1,
       });
+      setTimeout(() => {
+        window.location.href = next.checkoutUrl;
+      }, 100);
       return;
     }
     setCartText('ADD TO CART');

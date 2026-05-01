@@ -50,6 +50,13 @@ function App() {
       const ReactPixel = module.default?.default || module.default || module;
       ReactPixel.pageView();
     });
+
+    if (window.ShopifyAnalytics?.lib) {
+      window.ShopifyAnalytics.lib.track('Viewed Page', {
+        pageType: page,
+        url: window.location.href,
+      });
+    }
   }, [page]);
 
   useEffect(() => {

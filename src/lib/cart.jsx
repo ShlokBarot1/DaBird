@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { track } from '../utils/track';
 
 const CartContext = createContext();
 
@@ -334,22 +335,17 @@ export function CartProvider({ children }) {
 
   function goToCheckout() {
     if (cart.checkoutUrl) {
-      // ✅ Fire Meta Pixel InitiateCheckout event
-      import('react-facebook-pixel').then((module) => {
-        const ReactPixel = module.default?.default || module.default || module;
-        ReactPixel.track('InitiateCheckout', {
-          content_ids: cart.lines.map(line => line.variantId),
-          content_type: 'product',
-          value: parseFloat(cart.totalAmount),
-          currency: 'GBP',
-          num_items: cart.totalQuantity,
-        });
-        
-        // Small delay to ensure pixel fires before redirect
-        setTimeout(() => {
-          window.location.href = cart.checkoutUrl;
-        }, 100);
+      // ✅ Fire Meta Pixel InitiateCheckout event (browser + CAPI)
+      track('InitiateCheckout', {
+        content_ids: cart.lines.map(line => line.variantId),
+        content_type: 'product',
+        value: parseFloat(cart.totalAmount),
+        currency: 'GBP',
+        num_items: cart.totalQuantity,
       });
+      setTimeout(() => {
+        window.location.href = cart.checkoutUrl;
+      }, 100);
     }
   }
 
